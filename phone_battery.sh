@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Defaults
+totalBars=20
+
+# Help & arguments passing
+while [[ "$1" != "" ]]; do
+  case $1 in
+    "-h" | "--help" )
+      echo "sh $0 [options]"
+      echo "This script displays the current battery level of the connected Android phone as an ASCII battery."
+      echo " "
+      echo "  -h, --help    Displays this help message"
+      echo "  -s, --size    Specify the size of the battery"
+      echo " "
+      exit 0
+    ;;
+    "-s" | "--size" )
+      shift
+      totalBars=$1
+      shift
+    ;;
+  esac
+done
+
+# Getting the actual level
+level=$(adb shell cat /sys/class/power_supply/battery/capacity | sed 's/[^0-9]*//g')
+chargedBars=0
+if [[ -n "$level" ]]; then
+  chargedBars=$((level*$totalBars/100))
+fi
+
+# Battery sides
+battSide=""
+for (( i = 0; i < $totalBars; i++ )); do
+  battSide+="═"
+done
+
+# Full battery bars
+battString="║"
+for (( i = 0; i < $chargedBars; i++ )); do
+  battString+="█"
+done
+for (( i = $chargedBars; i < $totalBars; i++ )); do
+  battString+="░"
+done
+
+# Battery level bar
+limit=$((totalBars/2-3))
+chargedLimit=$limit
+levelString="║"
+if [[ $chargedBars -lt $chargedLimit ]]; then
+  chargedLimit=$chargedBars
+fi
+for (( i = 0; i < $limit; i++ )); do
+  levelString+="█"
+done
+for (( i = $limit; i < $chargedLimit; i++ )); do
+  levelString+="░"
+done
+levelString+=" $level % "
+limit=$((totalBars/2+3))
+for (( i = $limit; i < $chargedBars; i++ )); do
+  levelString+="█"
+done
+if [[ $chargedBars -gt $limit ]]; then
+  limit=$chargedBars
+fi
+for (( i = $limit; i < $totalBars; i++ )); do
+  levelString+="░"
+done
+
+if [[ $level -lt 100 ]]; then
+  levelString+="░─║"
+else
+  levelString+="─║"
+fi
+
+
+echo "╔${battSide}╗"
+echo ${battString}╚╗
+echo $levelString
+echo ${battString}╔╝
+echo "╚${battSide}╝"
