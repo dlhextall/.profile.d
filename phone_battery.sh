@@ -52,10 +52,10 @@ levelString="║"
 if [[ $chargedBars -lt $chargedLimit ]]; then
   chargedLimit=$chargedBars
 fi
-for (( i = 0; i < $limit; i++ )); do
+for (( i = 0; i < $chargedLimit; i++ )); do
   levelString+="█"
 done
-for (( i = $limit; i < $chargedLimit; i++ )); do
+for (( i = $chargedLimit; i < $limit; i++ )); do
   levelString+="░"
 done
 levelString+=" $level % "
