@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Check if a device is connected
+device_found=$(adb devices | wc -l)
+if [[ $device_found -lt 3 ]]; then
+  echo "No device found"
+  exit 0
+fi
+
 # Defaults
 totalBars=20
 
