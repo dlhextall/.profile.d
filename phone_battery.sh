@@ -32,6 +32,9 @@ done
 
 # Getting the actual level
 level=$(adb shell cat /sys/class/power_supply/battery/capacity | sed 's/[^0-9]*//g')
+if [[ $level -gt 100 ]]; then
+  level=$(adb shell cat /sys/class/power_supply/battery/capacity | sed 's/[^0-9]*//g')
+fi
 chargedBars=0
 if [[ -n "$level" ]]; then
   chargedBars=$((level*$totalBars/100))
