@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /projects/ctasites/webapp-dispatcher/src/main/webapp/WEB-INF/frontend/
+cd webapp-dispatcher/src/main/webapp/WEB-INF/frontend/
 if [ -z $1 ]; then
 	gulp default
 else

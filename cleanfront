@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git co webapp-dispatcher/src/main/webapp/js*.js*
+git co webapp-dispatcher/src/main/webapp/css*.css*
