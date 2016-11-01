@@ -4,6 +4,6 @@ cd webapp-dispatcher/src/main/webapp/WEB-INF/frontend/
 if [ -z $1 ]; then
 	gulp default
 else
-	gulp $1
+	gulp "$@"
 fi
 cd -
