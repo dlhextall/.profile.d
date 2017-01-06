@@ -1,3 +1,26 @@
 #!/bin/bash
 
-curl http://wttr.in/$1
+function _weather() {
+	location=$1
+	if [[ -z $location ]]; then
+		ip=$(my-ip)
+		if [[ -n $ip ]]; then
+			echo "No location provided, defaulting to external IP address: $ip"
+			csv=$(curl -s freegeoip.net/csv/$ip)
+			if [[ -n $csv ]]; then
+				IFS=',' read -ra coord <<< "$csv"
+				lat=${coord[${#coord[@]} - 3]}
+				long=${coord[${#coord[@]} - 2]}
+				location="$lat,$long"
+			fi
+		fi
+		if [[ -z $location ]]; then
+			echo "Unable to resolve location for IP address"
+			exit 0
+		fi
+	fi
+
+	curl http://wttr.in/$location
+}
+
+_weather $1
