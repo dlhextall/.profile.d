@@ -5,7 +5,7 @@ source "$(git --exec-path)/git-sh-setup"
 USAGE="BRANCH"
 function _recreate_branch() {
 	if [[ -n $1 ]]; then
-		git br -D $1
+		git branch -D $1
 		git push origin :$1
 		git checkout -b $1
 		git push origin -u $1
