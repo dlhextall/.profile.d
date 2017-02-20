@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function _serve() {
+	port=$1
+	if [[ -z $port ]]; then
+		port=8000
+	fi
+
+	python -m SimpleHTTPServer $port
+}
+
+_serve $1
