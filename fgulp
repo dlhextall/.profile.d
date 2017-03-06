@@ -1,9 +1,0 @@
-#!/bin/bash
-
-cd webapp-dispatcher/src/main/webapp/WEB-INF/frontend/
-if [ -z $1 ]; then
-	gulp default
-else
-	gulp "$@"
-fi
-cd -
