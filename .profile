@@ -20,7 +20,7 @@ done
 
 alias ..="cd .."
 alias ...="cd ../.."
-alias ll="ls -la"
+alias ll="ls -lah"
 alias fork="fork open"
 alias prev="open -a Preview"
 alias tree="tree -C"
