@@ -4,9 +4,13 @@ fi
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export PS1="[ \u@\h:\W\$(__git_ps1) ] $ "
 export EDITOR=vim
 export PROFILE_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
+	export PS1="> "
+else
+	export PS1="[ \u@\h:\W\$(__git_ps1) ] $ "
+fi
 
 for f in $PROFILE_LOCATION/*.sh; do
 	if [[ ! -x $f ]]; then
