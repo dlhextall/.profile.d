@@ -6,8 +6,9 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export PS1="[ \u@\h:\W\$(__git_ps1) ] $ "
 export EDITOR=vim
+export PROFILE_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-for f in ~/.bin/*.sh; do
+for f in $PROFILE_LOCATION/*.sh; do
 	if [[ ! -x $f ]]; then
 		source $f
 	fi
@@ -26,4 +27,4 @@ for f in ~/.profile.*; do
 	fi
 done
 
-export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PROFILE_LOCATION:/usr/local/bin:/usr/local/sbin:$PATH
