@@ -7,7 +7,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export EDITOR=vim
 export PROFILE_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
-	export PS1="> "
+	export PS1="\u $ "
 else
 	export PS1="[ \u@\h:\W\$(__git_ps1) ] $ "
 fi
