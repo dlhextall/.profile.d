@@ -1,5 +1,4 @@
-brew_installed=$( hash brew 2>/dev/null )
-if $brew_installed; then
+if hash brew 2>/dev/null; then
 	if [ -f $(brew --prefix)/etc/bash_completion ]; then
 		. $(brew --prefix)/etc/bash_completion
 	elif [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
@@ -37,7 +36,7 @@ export PATH=$PROFILE_LOCATION:/usr/local/bin:/usr/local/sbin:$PATH
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
 	export PS1="\u \$ "
 else
-	if $brew_installed; then
+	if hash __git_ps1 2>/dev/null; then
 		export PS1="\u\$(__git_ps1) \$ "
 	fi
 	trap 'set-title $( dirs -0 )' DEBUG
