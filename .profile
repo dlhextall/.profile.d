@@ -1,9 +1,12 @@
-if [ type brew &>/dev/null ]; then
+brew_installed=$( hash brew 2>/dev/null )
+if $brew_installed; then
 	if [ -f $(brew --prefix)/etc/bash_completion ]; then
 		. $(brew --prefix)/etc/bash_completion
 	elif [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 		. $(brew --prefix)/share/bash-completion/bash_completion
 	fi
+else
+	echo "Homebrew is not installed. Consider installing it for more functionalities."
 fi
 
 export CLICOLOR=1
@@ -34,6 +37,8 @@ export PATH=$PROFILE_LOCATION:/usr/local/bin:/usr/local/sbin:$PATH
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
 	export PS1="\u \$ "
 else
-	export PS1="\u\$(__git_ps1) \$ "
+	if $brew_installed; then
+		export PS1="\u\$(__git_ps1) \$ "
+	fi
 	trap 'set-title $( dirs -0 )' DEBUG
 fi
