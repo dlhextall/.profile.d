@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for f in *; do
+  cd $f
+  echo "Updating project $f"
+  git pull --rebase $1
+  cd -
+done
