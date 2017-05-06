@@ -27,6 +27,6 @@ Fetch the weather for a specified location, using [wttr.in](http://wttr.in).
 
 ## Dependencies
  - .profile
-  - [homebrew](https://brew.sh/) for bash completion (not needed if \_\_git\_ps1 is installed)
- - phone_battery
-  - [ADB](https://developer.android.com/studio/command-line/adb.html)
+   - [homebrew](https://brew.sh/) for bash completion (not needed if \_\_git\_ps1 is installed)
+ - phone-battery
+   - [ADB](https://developer.android.com/studio/command-line/adb.html)
