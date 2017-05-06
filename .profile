@@ -4,8 +4,6 @@ if hash brew 2>/dev/null; then
 	elif [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 		. $(brew --prefix)/share/bash-completion/bash_completion
 	fi
-else
-	echo "Homebrew is not installed. Consider installing it for more functionalities."
 fi
 
 export CLICOLOR=1
