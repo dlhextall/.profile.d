@@ -6,6 +6,9 @@ if hash brew 2>/dev/null; then
 	fi
 fi
 
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWCOLORHINTS=true
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export EDITOR=vim
