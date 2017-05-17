@@ -13,3 +13,7 @@ function docker-rmn-all() {
 function docker-stop-all() {
 	docker stop $(docker ps -a -q)
 }
+
+function docker-network-all() {
+	docker network inspect $( docker network ls -q )
+}
