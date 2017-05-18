@@ -4,6 +4,10 @@ if hash brew 2>/dev/null; then
 	elif [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 		. $(brew --prefix)/share/bash-completion/bash_completion
 	fi
+else
+	if [ -f /etc/bash_completion.d/git-prompt ]; then
+		. /etc/bash_completion.d/git-prompt
+	fi
 fi
 
 export GIT_PS1_SHOWUNTRACKEDFILES=true
