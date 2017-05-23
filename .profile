@@ -19,6 +19,7 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWCOLORHINTS=true
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+export LS_COLORS='di=1;36:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=34;43'
 export EDITOR=vim
 export PROFILE_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -36,6 +37,7 @@ done
 
 alias ..="cd .."
 alias ...="cd ../.."
+alias ls="ls --color"
 alias ll="ls -lah"
 alias fork="fork open"
 alias prev="open -a Preview"
