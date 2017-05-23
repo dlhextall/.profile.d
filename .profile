@@ -38,7 +38,9 @@ done
 
 alias ..="cd .."
 alias ...="cd ../.."
-alias ls="ls --color"
+if ls --color 2>/dev/null; then
+	alias ls="ls --color"
+fi
 alias ll="ls -lah"
 alias fork="fork open"
 alias prev="open -a Preview"
