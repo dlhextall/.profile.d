@@ -5,8 +5,12 @@ if hash brew 2>/dev/null; then
 		. $(brew --prefix)/share/bash-completion/bash_completion
 	fi
 else
-	if [ -f /etc/bash_completion.d/git-prompt ]; then
-		. /etc/bash_completion.d/git-prompt
+	if ! shopt -oq posix; then
+	  if [ -f /usr/share/bash-completion/bash_completion ]; then
+	    . /usr/share/bash-completion/bash_completion
+	  elif [ -f /etc/bash_completion ]; then
+	    . /etc/bash_completion
+	  fi
 	fi
 fi
 
@@ -37,7 +41,7 @@ alias fork="fork open"
 alias prev="open -a Preview"
 alias tree="tree -C"
 
-export PATH=$PROFILE_LOCATION:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PROFILE_LOCATION:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
 	export PS1="\u \$ "
 else
