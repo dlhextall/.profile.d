@@ -38,7 +38,7 @@ done
 
 alias ..="cd .."
 alias ...="cd ../.."
-if ls --color 2>/dev/null; then
+if ls --color &>/dev/null; then
 	alias ls="ls --color"
 fi
 alias ll="ls -lah"
