@@ -8,6 +8,8 @@ Extract multiple file archive types.
 Generate a .gitignore file, using [gitignore.io](https://www.gitignore.io/)
 ### git-recreate-branch
 Delete and recreate a branch in git.
+### incognito
+Start a bash session without a loaded profile .
 ### my-ip
 Print my IP address.
 ### notif
