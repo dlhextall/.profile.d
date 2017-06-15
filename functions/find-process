@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function _find_process() {
+  port=$1
+  if [[ -z $port ]]; then
+    echo "No port number specified"
+    exit 0
+  fi
+  lsof -i tcp:$port
+}
+
+_find_process $1

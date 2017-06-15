@@ -24,14 +24,14 @@ export EDITOR=vim
 export PROFILE_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export HISTCONTROL=ignoreboth
 
-for f in $PROFILE_LOCATION/*.sh; do
+for f in $PROFILE_LOCATION/functions/*.sh; do
 	if [[ ! -x $f ]]; then
 		source $f
 	fi
 done
 
 for f in ~/.profile.*; do
-	if [[ -a $f ]]; then
+	if [[ -a $f && -f $f ]]; then
 		source $f
 	fi
 done
@@ -46,7 +46,7 @@ alias fork="fork open"
 alias prev="open -a Preview"
 alias tree="tree -C"
 
-export PATH=$PROFILE_LOCATION:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PROFILE_LOCATION/functions:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
 	export PS1="\u \$ "
 else
