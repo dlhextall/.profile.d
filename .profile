@@ -29,7 +29,12 @@ export EDITOR=vim
 # This file's location
 export PROFILE_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Ignore duplicates in bash history
-export HISTCONTROL=ignoreboth
+export HISTCONTROL="erasedups:ignoreboth"
+# Record the history right away (instead of at the end of the session)
+export PROMPT_COMMAND='history -a'
+# Correct minor spelling mistakes
+shopt -s cdspell
+shopt -s dirspell
 
 # Functions included in this library
 for f in $PROFILE_LOCATION/functions/*.sh; do
@@ -66,5 +71,5 @@ else
 	else
 		export PS1="\u \$ "
 	fi
-	trap 'set-title $( dirs -0 )' DEBUG
+	export PROMPT_COMMAND="$PROMPT_COMMAND"'; set-title $( dirs -0 )'
 fi
