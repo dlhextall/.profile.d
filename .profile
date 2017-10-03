@@ -51,7 +51,7 @@ for f in ~/.profile.*; do
 done
 
 # .config files
-if [ "$( ls -l .config/ | wc -l )" -lt "$( ls -l .profile.d/.config/ | wc -l )" ]; then
+if [ "$( ls -l ~/.config/ | wc -l )" -lt "$( ls -l $PROFILE_LOCATION/.config/ | wc -l )" ]; then
 	echo "There seems to be missing some config files in your ~/.config directory."
 	echo "To add those in $PROFILE_LOCATION, type:"
 	echo "ln -s $PROFILE_LOCATION/.config/* .config/"
