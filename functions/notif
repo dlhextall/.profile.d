@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [[ -n $1 ]]; then
-	title="ALERT";
-	if [[ -n $2 ]]; then
-		title="$2"
-	fi
-	osascript -e "display notification \"$1\" with title \"$title\""
-fi
