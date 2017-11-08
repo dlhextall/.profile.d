@@ -16,6 +16,8 @@ else
 	fi
 fi
 
+# For tmux
+export SHELL=$( which bash )
 # Git values
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWDIRTYSTATE=true
