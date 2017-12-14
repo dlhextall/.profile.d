@@ -71,6 +71,9 @@ alias prev="open -a Preview"
 alias tree="tree -C"
 
 export PATH=$PROFILE_LOCATION/functions:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+if hash direnv 2>/dev/null; then
+	eval "$(direnv hook bash)"
+fi
 # Set PS1 with git if available
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
 	export PS1="\u \$ "
