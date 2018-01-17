@@ -6,7 +6,7 @@ function _serve() {
 		port=8000
 	fi
 
-	python -m SimpleHTTPServer $port
+	python $PROFILE_LOCATION/functions/lib/extended-simple-http-server.py $port
 }
 
 _serve $1
