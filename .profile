@@ -78,10 +78,10 @@ fi
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
 	export PS1="\u \$ "
 else
+	ps1_var="\e[1m\u"
 	if hash __git_ps1 2>/dev/null; then
-		export PS1="\u\$(__git_ps1) \$ "
-	else
-		export PS1="\u \$ "
+		ps1_var="$ps1_var\$(__git_ps1)"
 	fi
+	export PS1="$ps1_var \$ \e[0m"
 	export PROMPT_COMMAND="$PROMPT_COMMAND"'; set-title $( dirs -0 )'
 fi
