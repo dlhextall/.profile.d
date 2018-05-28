@@ -2,7 +2,7 @@
   br = branch
   ch = cherry-pick
   ci = commit
-  clean-branches = !git branch --merged | grep -v \\* | xargs git branch -D
+  cb = clean-branches
   co = checkout
   commend = commit --amend --no-edit
   dump = cat-file -p
