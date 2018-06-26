@@ -4,7 +4,7 @@ source "$(git --exec-path)/git-sh-setup"
 
 USAGE="BRANCH"
 function _clean_branches() {
-	git branch --merged | grep -v \\* | xargs git branch -D
+	git branch --merged | grep -v \\* | grep -v master | xargs git branch -D
 }
 
 _clean_branches
