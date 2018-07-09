@@ -16,6 +16,10 @@ else
 	fi
 fi
 
+# fuzzy finder
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # For tmux
 export SHELL=$( which bash )
 # Git values
