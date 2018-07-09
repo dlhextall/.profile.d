@@ -44,16 +44,12 @@ shopt -s dirspell
 
 # Functions included in this library
 for f in $PROFILE_LOCATION/functions/*.sh; do
-	if [[ ! -x $f ]]; then
-		source $f
-	fi
+	[[ ! -x $f ]] && source $f
 done
 
 # Machine-specific .profile
 for f in ~/.profile.*; do
-	if [[ -a $f && -f $f ]]; then
-		source $f
-	fi
+	[[ -a $f && -f $f ]] && source $f
 done
 
 # .config files
