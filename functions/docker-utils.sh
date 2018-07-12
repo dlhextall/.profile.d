@@ -17,3 +17,7 @@ function docker-stop-all() {
 function docker-network-all() {
 	docker network inspect $( docker network ls -q )
 }
+
+function docker-build-local() {
+	docker build --pull --file Dockerfile --tag "${PWD##*/}":local .
+}
