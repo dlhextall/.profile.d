@@ -67,6 +67,19 @@
                     "ignore": true,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 40962,
+                        "vendor_id": 1241
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
                 }
             ],
             "fn_function_keys": [
@@ -191,7 +204,7 @@
                         "key_code": "pause"
                     },
                     "to": {
-                        "key_code": "eject"
+                        "consumer_key_code": "eject"
                     }
                 },
                 {
