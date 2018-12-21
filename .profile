@@ -19,6 +19,10 @@ fi
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# thefuck
+# https://github.com/nvbn/thefuck
+eval $( thefuck --alias )
+
 # For tmux
 export SHELL=$( which bash )
 # Git values
