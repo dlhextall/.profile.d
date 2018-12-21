@@ -69,7 +69,7 @@ alias fork="fork open"
 alias prev="open -a Preview"
 alias tree="tree -C"
 
-export PATH=$PROFILE_LOCATION/functions:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PROFILE_LOCATION/functions:~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
 if hash direnv 2>/dev/null; then
 	eval "$(direnv hook bash)"
 fi
