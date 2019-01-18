@@ -5,8 +5,7 @@ function _setJavaVersion() {
     echo "No java version specified"
     exit 0
   fi
-  export JAVA_HOME=$( /usr/libexec/java_home -v $1 )
-  echo "Updated \$JAVA_HOME: $JAVA_HOME"
+  echo export JAVA_HOME=$( /usr/libexec/java_home -v $1 )
 }
 
 _setJavaVersion $1
