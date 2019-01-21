@@ -49,6 +49,18 @@ shopt -s dirspell
 for f in $PROFILE_LOCATION/functions/*.sh; do
 	[[ ! -x $f ]] && source $f
 done
+export PATH=$PROFILE_LOCATION/functions:~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
+
+# General aliases
+alias ..="cd .."
+alias ...="cd ../.."
+if ls --color &>/dev/null; then
+	alias ls="ls --color"
+fi
+alias ll="ls -lah"
+alias fork="fork open"
+alias prev="open -a Preview"
+alias tree="tree -C"
 
 # Machine-specific .profile
 for f in ~/.profile.*; do
@@ -62,18 +74,6 @@ if [ "$( ls -l ~/.config/ | wc -l )" -lt "$( ls -l $PROFILE_LOCATION/.config/ | 
 	echo "ln -s $PROFILE_LOCATION/.config/* .config/"
 fi
 
-# General aliases
-alias ..="cd .."
-alias ...="cd ../.."
-if ls --color &>/dev/null; then
-	alias ls="ls --color"
-fi
-alias ll="ls -lah"
-alias fork="fork open"
-alias prev="open -a Preview"
-alias tree="tree -C"
-
-export PATH=$PROFILE_LOCATION/functions:~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
 if hash direnv 2>/dev/null; then
 	eval "$(direnv hook bash)"
 fi
