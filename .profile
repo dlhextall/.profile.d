@@ -21,7 +21,7 @@ fi
 
 # thefuck
 # https://github.com/nvbn/thefuck
-eval $( thefuck --alias )
+hash thefuck 2>/dev/null && eval $( thefuck --alias )
 
 # For tmux
 export SHELL=$( which bash )
@@ -74,17 +74,16 @@ if [ "$( ls -l ~/.config/ | wc -l )" -lt "$( ls -l $PROFILE_LOCATION/.config/ | 
 	echo "ln -s $PROFILE_LOCATION/.config/* .config/"
 fi
 
-if hash direnv 2>/dev/null; then
-	eval "$(direnv hook bash)"
-fi
+# direnv
+# https://direnv.net/
+hash direnv 2>/dev/null && eval "$(direnv hook bash)"
+
 # Set PS1 with git if available
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
 	export PS1="\u \$ "
 else
 	ps1_var="\[\e[1m\]\u"
-	if hash __git_ps1 2>/dev/null; then
-		ps1_var="$ps1_var\$(__git_ps1)"
-	fi
+	hash __git_ps1 2>/dev/null && ps1_var="$ps1_var\$(__git_ps1)"
 	export PS1="$ps1_var \$ \[\e[0m\]"
 	export PROMPT_COMMAND="$PROMPT_COMMAND"'; set-title $( dirs -0 )'
 fi
