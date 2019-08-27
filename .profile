@@ -15,14 +15,6 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-# fuzzy finder
-# https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# thefuck
-# https://github.com/nvbn/thefuck
-hash thefuck 2>/dev/null && eval $( thefuck --alias )
-
 # For tmux
 export SHELL=$( which bash )
 # Git values
@@ -49,7 +41,7 @@ shopt -s dirspell
 for f in $PROFILE_LOCATION/functions/*.sh; do
 	[[ ! -x $f ]] && source $f
 done
-export PATH=$PROFILE_LOCATION/functions:~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PROFILE_LOCATION/functions:~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:$PATH
 
 # General aliases
 alias ..="cd .."
@@ -77,6 +69,18 @@ fi
 # direnv
 # https://direnv.net/
 hash direnv 2>/dev/null && eval "$(direnv hook bash)"
+
+# fuzzy finder
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# thefuck
+# https://github.com/nvbn/thefuck
+hash thefuck 2>/dev/null && eval $( thefuck --alias )
+
+# rvm
+# https://rvm.io/
+[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
 # Set PS1 with git if available
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
