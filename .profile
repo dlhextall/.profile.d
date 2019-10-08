@@ -41,7 +41,8 @@ shopt -s dirspell
 for f in $PROFILE_LOCATION/functions/*.sh; do
 	[[ ! -x $f ]] && source $f
 done
-export PATH=$PROFILE_LOCATION/functions:~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:$PATH
+
+export PATH=$(find $PROFILE_LOCATION/functions -type d | tr '\n' ':' | sed 's/:$//'):~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:$PATH
 
 # General aliases
 alias ..="cd .."
