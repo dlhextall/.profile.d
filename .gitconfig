@@ -7,6 +7,7 @@
   commend = commit --amend --no-edit
   dump = cat-file -p
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  mm = merge-master
   pl = pull --rebase
   plog = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   poule = pull
