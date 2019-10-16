@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+HOSTNAME=`echo $@ | sed s/.*@//`
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
+  TERMINAL_APP="Terminal"
+fi
+
+if [[ -n $TERMINAL_APP ]]; then
+  set_bg () {
+    osascript -e "tell application \"$TERMINAL_APP\" to set current settings of window 1 to $1"
+  }
+
+  on_exit () {
+    set_bg "default settings"
+  }
+  trap on_exit EXIT
+
+  if [[ "$HOSTNAME" == *"prod"* ]]; then
+    set_bg "settings set \"Red Sands\""
+  elif [[ "$HOSTNAME" =~ (master|staging|sandbox) ]]; then
+    set_bg "settings set \"Novel\""
+  fi
+fi
+
+/usr/bin/ssh "$@"
