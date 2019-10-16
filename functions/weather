@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 function _weather() {
 	location=$1
@@ -6,7 +6,7 @@ function _weather() {
 		ip=$(my-ip)
 		if [[ -n $ip ]]; then
 			echo "No location provided, defaulting to external IP address: $ip"
-			csv=$(curl -s freegeoip.net/csv/$ip)
+			csv=$(curl -s freegeoip.net/csv/$ip) ## does not work currently
 			if [[ -n $csv ]]; then
 				IFS=',' read -ra coord <<< "$csv"
 				lat=${coord[${#coord[@]} - 3]}
@@ -16,7 +16,7 @@ function _weather() {
 		fi
 		if [[ -z $location ]]; then
 			echo "Unable to resolve location for IP address"
-			exit 0
+			exit 1
 		fi
 	fi
 

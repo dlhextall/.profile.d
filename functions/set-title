@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function _setTitle() {
   if [[ -z $1 ]]; then

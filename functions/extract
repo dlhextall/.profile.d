@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 if [ -f $1 ] ; then
     case $1 in
@@ -13,8 +13,9 @@ if [ -f $1 ] ; then
         *.zip)       unzip $1       ;;
         *.Z)         uncompress $1  ;;
         *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
+        *)     echo "'$1' cannot be extracted via extract()" && exit 1 ;;
     esac
 else
     echo "'$1' is not a valid file"
+    exit 1
 fi

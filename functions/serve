@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 function _serve() {
 	port=$1
