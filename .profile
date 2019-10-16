@@ -54,6 +54,10 @@ alias ll="ls -lah"
 alias fork="fork open"
 alias prev="open -a Preview"
 alias tree="tree -C"
+function mkcd() {
+	## Shell scripts are run in a subshell, so the cd command would never work in an external function
+	mkdir -p "$1" && cd "$_"
+}
 
 # Machine-specific .profile
 for f in ~/.profile.*; do
