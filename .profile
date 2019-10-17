@@ -51,7 +51,6 @@ if ls --color &>/dev/null; then
 	alias ls="ls --color"
 fi
 alias ll="ls -lah"
-alias fork="fork open"
 alias prev="open -a Preview"
 alias tree="tree -C"
 function mkcd() {
