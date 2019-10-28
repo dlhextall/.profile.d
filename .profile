@@ -36,6 +36,7 @@ export PROMPT_COMMAND='history -a'
 # Correct minor spelling mistakes
 shopt -s cdspell
 shopt -s dirspell
+[[ ! -f ~/.inputrc ]] && echo "set completion-ignore-case On" >> ~/.inputrc
 
 # Functions included in this library
 for f in $PROFILE_LOCATION/functions/*.sh; do
