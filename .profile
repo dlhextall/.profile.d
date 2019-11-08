@@ -61,7 +61,7 @@ function mkcd() {
 
 # Machine-specific .profile
 for f in ~/.profile.*; do
-	[[ -a $f && -f $f ]] && source $f
+	[[ -f $f ]] && source $f
 done
 
 # .config files
