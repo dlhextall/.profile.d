@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-HOSTNAME=`echo $@ | sed s/.*@//`
 if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
   TERMINAL_APP="Terminal"
 fi
@@ -15,6 +14,7 @@ if [[ -n $TERMINAL_APP ]]; then
   }
   trap on_exit EXIT
 
+  HOSTNAME=`echo $@ | sed s/.*@//`
   if [[ "$HOSTNAME" == *"prod"* ]]; then
     set_bg "settings set \"Red Sands\""
   elif [[ "$HOSTNAME" =~ (master|staging|sandbox) ]]; then
