@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 usage() {
     echo "$( basename $0 ): usage"
     echo "  -i --input      directory in which to scan"
@@ -27,7 +25,6 @@ get_handbrake_cli() {
     elif [ -d "/usr/local/Cellar/handbrake" ]; then
         echo "/usr/local/Cellar/handbrake/$( ls '/usr/local/Cellar/handbrake' | sort -n -t . -r | head -n 1 )/bin/HandBrakeCLI"
     else
-        echo "ERROR: HandBrakeCLI not found"
         return 1
     fi
 }
@@ -43,7 +40,7 @@ get_handbrake_cli() {
 #   None
 #######################################
 convert() {
-    executable=$( get_handbrake_cli )
+    executable=$( get_handbrake_cli ) || { echo " "; echo "ERROR: HandBrakeCLI not found"; exit 1; }
     for f in $1; do
         output=${f%.*}.$2
 
@@ -55,15 +52,15 @@ convert() {
 
 while [ "$1" != "" ]; do
     case $1 in
-        -i | --input )          shift
-                                input=$1
-                                ;;
-        -x | --ext )            shift
-                                extension=$1
-                                ;;
-        -h | --help )           usage 0
-                                ;;
-        * )                     usage 1
+        -i | --input )      shift
+                            input=$1
+                            ;;
+        -x | --ext )        shift
+                            extension=$1
+                            ;;
+        -h | --help )       usage 0
+                            ;;
+        * )                 usage 1
     esac
     shift
 done
