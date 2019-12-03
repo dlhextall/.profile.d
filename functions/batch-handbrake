@@ -35,10 +35,10 @@ get_handbrake_cli() {
 #######################################
 # Convert files matching $input to $extension
 # Globals:
+#   None
+# Arguments:
 #   input
 #   extension
-# Arguments:
-#   None
 # Returns:
 #   None
 #######################################
