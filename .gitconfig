@@ -6,6 +6,7 @@
   co = checkout
   commend = commit --amend --no-edit
   mm = merge-master
+  nah = reset HEAD --hard
   pl = pull --rebase
   plog = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   poop = stash pop
