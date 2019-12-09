@@ -23,6 +23,7 @@ get_handbrake_cli() {
     if hash HandBrakeCLI 2>/dev/null; then
         echo "HandBrakeCLI"
     elif [ -d "/usr/local/Cellar/handbrake" ]; then
+        # Get latest install of HandBrakeCLI from HomeBrew
         echo "/usr/local/Cellar/handbrake/$( ls '/usr/local/Cellar/handbrake' | sort -n -t . -r | head -n 1 )/bin/HandBrakeCLI"
     else
         return 1
