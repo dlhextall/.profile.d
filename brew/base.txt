@@ -1,12 +1,8 @@
 bash
 bash-completion
 direnv
-docker-completion
-docker-compose-completion
-docker-machine-completion
 fzf
 git
-maven-completion
 the_silver_searcher
 thefuck
 trash
