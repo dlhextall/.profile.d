@@ -1,17 +1,17 @@
 [alias]
-  br = branch
-  ch = cherry-pick
-  ci = commit
-  cb = clean-branches
-  co = checkout
-  commend = commit --amend --no-edit
-  mm = merge-master
-  nah = reset HEAD --hard
-  pl = pull --rebase
-  plog = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  poop = stash pop
-  ps = pull --rebase --autostash
-  rb = recreate-branch
-  st = status
+    br = branch
+    ch = cherry-pick
+    ci = commit
+    cb = clean-branches
+    co = checkout
+    commend = commit --amend --no-edit
+    mm = merge-master
+    nah = reset HEAD --hard
+    pl = pull --rebase
+    plog = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    poop = stash pop
+    ps = pull --rebase --autostash
+    rb = recreate-branch
+    st = status
 [color]
-  ui = true
+    ui = true

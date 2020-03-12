@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 for f in *; do
-  cd $f
-  echo "Updating project $f"
-  git pull --rebase $1
-  cd -
+    cd $f
+    echo "Updating project $f"
+    git pull --rebase $1
+    cd -
 done

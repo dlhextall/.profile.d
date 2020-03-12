@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
 function _serve() {
-	port=$1
-	if [[ -z $port ]]; then
-		port=8000
-	fi
+    port=$1
+    if [[ -z $port ]]; then
+        port=8000
+    fi
 
-	python $PROFILE_LOCATION/functions/lib/extended-simple-http-server.py $port
+    python $PROFILE_LOCATION/functions/lib/extended-simple-http-server.py $port
 }
 
 _serve $1

@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
 function _ql() {
-  if [ -f $1 ] ; then
-      qlmanage -p 2>/dev/null $1
-  else
-      echo "'$1' is not a valid file"
-      exit 1
-  fi
+    if [ -f $1 ] ; then
+        qlmanage -p 2>/dev/null $1
+    else
+        echo "'$1' is not a valid file"
+        exit 1
+    fi
 }
 
 _ql $1

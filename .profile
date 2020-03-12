@@ -1,18 +1,18 @@
 # OSX bash completion via homebrew
 if hash brew 2>/dev/null; then
-	if [ -f $(brew --prefix)/etc/bash_completion ]; then
-		. $(brew --prefix)/etc/bash_completion
-	elif [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-		. $(brew --prefix)/share/bash-completion/bash_completion
-	fi
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    elif [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+        . $(brew --prefix)/share/bash-completion/bash_completion
+    fi
 fi
 # *NIX bash completion
 if ! shopt -oq posix; then
-	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		. /usr/share/bash-completion/bash_completion
-	elif [ -f /etc/bash_completion ]; then
-		. /etc/bash_completion
-	fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # For tmux
@@ -40,7 +40,7 @@ shopt -s dirspell
 
 # Functions included in this library
 for f in $PROFILE_LOCATION/functions/*.sh; do
-	[[ ! -x $f ]] && source $f
+    [[ ! -x $f ]] && source $f
 done
 
 export PATH=$(find $PROFILE_LOCATION/functions -type d | tr '\n' ':' | sed 's/:$//'):~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:$PATH
@@ -55,20 +55,20 @@ alias ll="ls -lah"
 alias prev="open -a Preview"
 alias tree="tree -C"
 function mkcd() {
-	## Shell scripts are run in a subshell, so the cd command would never work in an external function
-	mkdir -p "$1" && cd "$_"
+    ## Shell scripts are run in a subshell, so the cd command would never work in an external function
+    mkdir -p "$1" && cd "$_"
 }
 
 # Machine-specific .profile
 for f in ~/.profile.*; do
-	[[ -f $f ]] && source $f
+    [[ -f $f ]] && source $f
 done
 
 # .config files
 if [ "$( ls -l ~/.config/ | wc -l )" -lt "$( ls -l $PROFILE_LOCATION/.config/ | wc -l )" ]; then
-	echo "There seems to be missing some config files in your ~/.config directory."
-	echo "To add those in $PROFILE_LOCATION, type:"
-	echo "ln -s $PROFILE_LOCATION/.config/* .config/"
+    echo "There seems to be missing some config files in your ~/.config directory."
+    echo "To add those in $PROFILE_LOCATION, type:"
+    echo "ln -s $PROFILE_LOCATION/.config/* .config/"
 fi
 
 # direnv
@@ -89,10 +89,10 @@ hash thefuck 2>/dev/null && eval $( thefuck --alias )
 
 # Set PS1 with git if available
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
-	export PS1="\u \$ "
+    export PS1="\u \$ "
 else
-	ps1_var="\[\e[1m\]\u"
-	hash __git_ps1 2>/dev/null && ps1_var="$ps1_var\$(__git_ps1)"
-	export PS1="$ps1_var \$ \[\e[0m\]"
-	export PROMPT_COMMAND="$PROMPT_COMMAND"'; set-title $( dirs -0 )'
+    ps1_var="\[\e[1m\]\u"
+    hash __git_ps1 2>/dev/null && ps1_var="$ps1_var\$(__git_ps1)"
+    export PS1="$ps1_var \$ \[\e[0m\]"
+    export PROMPT_COMMAND="$PROMPT_COMMAND"'; set-title $( dirs -0 )'
 fi
