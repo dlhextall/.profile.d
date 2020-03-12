@@ -49,7 +49,7 @@ export PATH=$(find $PROFILE_LOCATION/functions -type d | tr '\n' ':' | sed 's/:$
 alias ..="cd .."
 alias ...="cd ../.."
 if ls --color &>/dev/null; then
-	alias ls="ls --color"
+    alias ls="ls --color"
 fi
 alias ll="ls -lah"
 alias prev="open -a Preview"
