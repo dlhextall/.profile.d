@@ -21,3 +21,11 @@ function docker-network-all() {
 function docker-build-local() {
     docker build --pull --file Dockerfile --tag "${PWD##*/}":local $( [ -z "$1" ] && echo "." || echo $1 )
 }
+
+function docker-service-update() {
+    docker service update --force "${DOCKER_STACK_NAME}_${PWD##*/}"
+}
+
+function docker-build-and-update-service() {
+    docker-build-local . && docker-service-update
+}
