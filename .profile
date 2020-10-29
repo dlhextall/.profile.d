@@ -59,8 +59,10 @@ function mkcd() {
 }
 
 # MacOS-specific aliases
-alias prev="open -a Preview"
-alias screensaver="open -a ScreenSaverEngine"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias prev="open -a Preview"
+    alias screensaver="open -a ScreenSaverEngine"
+fi
 
 # Machine-specific .profile
 for f in ~/.profile.*; do
