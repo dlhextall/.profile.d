@@ -19,7 +19,7 @@ function docker-network-all() {
 }
 
 function docker-build-local() {
-    docker build --pull --file Dockerfile --tag "${PWD##*/}":local $( [ -z "$1" ] && echo "." || echo $1 )
+    docker build --pull --file Dockerfile --tag "${PWD##*/}":local "$@"
 }
 
 function docker-service-update() {
