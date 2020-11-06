@@ -4,6 +4,8 @@ This is a collection of useful shell scripts for an OSX/\*NIX environment.
 ## Info
 ### extract
 Extract multiple file archive types.
+### get-java-version
+Returns a minimal Java version number (1.8 -> 8, 11 -> 11, etc)
 ### gi
 Generate a .gitignore file, using [gitignore.io](https://www.gitignore.io/)
 ### git-recreate-branch

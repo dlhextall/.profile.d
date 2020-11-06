@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+function _getJavaVersion() {
+    java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}')
+    major=${java_version%%.*}
+    if [ $major -gt 1 ]; then
+        version=$major
+    else
+        minor_patch=${java_version#*.}
+        version=${minor_patch%%.*}
+    fi
+    echo "$version"
+}
+
+_getJavaVersion
