@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function cd_and_git_pull() {
+    cd $( echo "$0" | sed 's,\.git,,g' )
+    echo "updating $( git remote get-url origin ) on branch $( git br --show-current )"
+    git ps
+    echo ""
+    cd - >/dev/null
+}
+export -f cd_and_git_pull
+
+find . -maxdepth 5 -mindepth 1 -type d -name .git -exec bash -c 'cd_and_git_pull "$0"' {} \;
