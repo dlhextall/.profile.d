@@ -48,9 +48,7 @@ export PATH=$(find $PROFILE_LOCATION/functions -type d | tr '\n' ':' | sed 's/:$
 # General aliases
 alias ..="cd .."
 alias ...="cd ../.."
-if ls --color &>/dev/null; then
-    alias ls="ls --color"
-fi
+ls --color &>/dev/null && alias ls="ls --color"
 alias ll="ls -lah"
 alias tree="tree -C"
 function mkcd() {
