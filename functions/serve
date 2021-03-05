@@ -1,11 +1,7 @@
 #!/usr/bin/env sh
 
 function _serve() {
-    port=$1
-    if [[ -z $port ]]; then
-        port=8000
-    fi
-
+    port="${1:-8080}"
     python $PROFILE_LOCATION/functions/lib/extended-simple-http-server.py $port
 }
 

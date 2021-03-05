@@ -3,7 +3,7 @@
 function _setJavaVersion() {
     if [[ -z $1 ]]; then
         echo "No java version specified"
-        exit 0
+        exit 1
     fi
     echo export JAVA_HOME=$( /usr/libexec/java_home -v $1 )
 }
