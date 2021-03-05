@@ -8,6 +8,8 @@ Extract multiple file archive types.
 Returns a minimal Java version number (1.8 -> 8, 11 -> 11, etc)
 ### gi
 Generate a .gitignore file, using [gitignore.io](https://www.gitignore.io/)
+### git-pull-all
+Pull changes from multiple repositories.
 ### git-recreate-branch
 Delete and recreate a branch in git.
 ### incognito
@@ -18,8 +20,6 @@ Print my IP address.
 Display a notification in OSX.
 ### phone-battery
 Print the connected Android phone's battery level using ADB.
-### pull-all
-Pull changes from multiple repositories.
 ### ql
 Open a file in Quicklook mode (OSX only).
 ### serve

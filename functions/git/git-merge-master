@@ -2,7 +2,6 @@
 
 source "$(git --exec-path)/git-sh-setup"
 
-USAGE="MERGE"
 function _merge_master() {
     git checkout master
     git pull --rebase

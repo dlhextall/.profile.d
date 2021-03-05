@@ -2,7 +2,6 @@
 
 source "$(git --exec-path)/git-sh-setup"
 
-USAGE="BRANCH"
 function _recreate_branch() {
 	if [[ -n $1 ]]; then
 		git branch -D $1
