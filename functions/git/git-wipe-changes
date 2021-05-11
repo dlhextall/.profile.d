@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+source "$(git --exec-path)/git-sh-setup"
+
+function _wipe_changes() {
+    git reset HEAD --hard
+    added_files=$( git st --short | awk '{print $2}' )
+    if [[ -z "${added_files}" ]]; then
+        exit 0
+    fi
+    if [ hash trash 2>/dev/null ]; then
+        trash ${added_files}
+    else
+        rm -rf ${added_files}
+    fi
+}
+
+_wipe_changes
