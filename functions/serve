@@ -1,8 +1,40 @@
-#!/usr/bin/env sh
+#!/usr/bin/env python3
 
-function _serve() {
-    port="${1:-8080}"
-    python $PROFILE_LOCATION/functions/lib/extended-simple-http-server.py $port
-}
+import argparse
+import ssl
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 
-_serve $1
+
+class CORSRequestHandler(SimpleHTTPRequestHandler):
+    
+    def end_headers(self):
+        self.send_header('Access-Control-Allow-Origin', '*')
+        SimpleHTTPRequestHandler.end_headers(self)
+
+
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port",
+                        help="Port on which the server will run.",
+                        default=0,
+                        required=False)
+    parser.add_argument("-s", "--ssl",
+                        help="SSL certificate location to use. If no certificate is specified, it will run on HTTP only.",
+                        required=False)
+    return parser.parse_args()
+
+
+def start_server(port, ssl_directory):
+    httpd = HTTPServer(('', int(port)), CORSRequestHandler)
+    if args.ssl:
+        httpd.socket = ssl.wrap_socket(httpd.socket, 
+                keyfile=f"{ssl_directory}/key.pem", 
+                certfile=f"{ssl_directory}/cert.pem", 
+                server_side=True)
+    print(f"Started server on port {httpd.server_port}")
+    httpd.serve_forever()
+
+
+if __name__ == '__main__':
+    args = parse_arguments()
+    start_server(args.port, args.ssl)
