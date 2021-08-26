@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function cd_and_git_pull() {
+    cd $( echo "$0" | sed 's,\.git,,g' )
+    echo "updating $( git remote get-url origin ) on branch master and cleaning merged branches"
+    git okbye
+    echo ""
+    cd - >/dev/null
+}
+export -f cd_and_git_pull
+
+# TODO: make maxdepth configurable
+find . -maxdepth 5 -mindepth 1 -type d -name .git -exec bash -c 'cd_and_git_pull "$0"' {} \;
