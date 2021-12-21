@@ -11,3 +11,5 @@ export -f cd_and_git_pull
 
 # TODO: make maxdepth configurable
 find . -maxdepth 5 -mindepth 1 -type d -name .git -exec bash -c 'cd_and_git_pull "$0"' {} \;
+
+unset -f cd_and_git_pull

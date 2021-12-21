@@ -10,3 +10,5 @@ function cd_and_git_pull() {
 export -f cd_and_git_pull
 
 find . -maxdepth "${1:-2}" -mindepth 1 -type d -name .git -exec bash -c 'cd_and_git_pull "$0"' {} \;
+
+unset -f cd_and_git_pull
