@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+function cd_and_mvn_dependency() {
+    dependency="$0"
+    cd $( echo "$1" | sed 's,pom\.xml,,g' )
+    echo "searching for $dependency in $( pwd )"
+    mvn clean dependency:list | grep $dependency
+    echo ""
+    cd - >/dev/null
+}
+export -f cd_and_mvn_dependency
+
+if [[ -z "$1" ]]; then
+    echo "No dependency specified"
+    exit 1
+fi
+find . -maxdepth "${2:-2}" -mindepth 1 -type f -name pom.xml -exec bash -c 'cd_and_mvn_dependency "$1"' "$1" {} \;
+
+unset -f cd_and_mvn_dependency
