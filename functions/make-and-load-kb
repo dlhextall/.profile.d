@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function _make_and_load_kb() {
+    kb=$1
+    hex="${kb//[\/:]/_}"
+    mcu=$( cat "keyboards/${kb%%:*}/rules.mk" | grep "MCU = " | sed 's/^.*= //' )
+    make "${kb}" && teensy_loader_cli -w -mmcu="${mcu}" ".build/${hex}.hex"
+}
+
+_make_and_load_kb $1
