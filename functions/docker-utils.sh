@@ -23,7 +23,7 @@ function docker-build-local() {
 }
 
 function docker-service-exec() {
-    docker exec $( docker service ps -f "desired-state=running" --no-trunc --format "{{.Name}}.{{.ID}}" "$1" ) "${@: 2}"
+    docker exec -it $( docker service ps -f "desired-state=running" --no-trunc --format "{{.Name}}.{{.ID}}" "$1" ) "${@: 2}"
 }
 
 function docker-service-update() {
