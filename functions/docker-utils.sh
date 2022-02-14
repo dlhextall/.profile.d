@@ -27,7 +27,11 @@ function docker-service-exec() {
 }
 
 function docker-service-update() {
-    docker service update --force "${DOCKER_STACK_NAME}_${PWD##*/}"
+    service_name="${SERVICE_NAME}"
+    if [[ -z "$service_name" ]]; then
+        service_name="${DOCKER_STACK_NAME}_${PWD##*/}"
+    fi
+    docker service update --force "${service_name}"
 }
 
 function docker-build-and-update-service() {
