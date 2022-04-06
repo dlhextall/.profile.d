@@ -12,8 +12,10 @@
     pl = pull --rebase
     plog = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     poop = stash pop
+    pwl = push --force-with-lease
     ps = pull --rebase --autostash
     rb = recreate-branch
+    rbm = rebase-master
     st = status
 [color]
     ui = true
