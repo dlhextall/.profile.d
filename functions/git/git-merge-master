@@ -2,11 +2,7 @@
 
 source "$(git --exec-path)/git-sh-setup"
 
-function _merge_master() {
-    git checkout master
-    git pull --rebase
-    git checkout -
-    git merge master
-}
-
-_merge_master
+git checkout master
+git pull --rebase
+git checkout -
+git merge master
