@@ -45,7 +45,7 @@ for f in $PROFILE_LOCATION/functions/*.sh; do
     [[ ! -x $f ]] && source $f
 done
 
-export PATH=$(find $PROFILE_LOCATION/functions -maxdepth 2 -type d | tr '\n' ':' | sed 's/:$//'):~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
+PATH=$(find $PROFILE_LOCATION/functions -maxdepth 2 -type d | tr '\n' ':' | sed 's/:$//'):~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # General aliases
 alias ..="cd .."
