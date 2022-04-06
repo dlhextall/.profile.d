@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
-function _countdown() {
-    seconds=$1
-    if [[ ! $seconds =~ ^[0-9]+$ ]]; then
-        echo "Invalid number of seconds"
-        exit 1
-    fi
-    while [ $seconds -gt 0 ]; do
-        echo -ne "Sleeping for ${seconds}s\r"
-        sleep 1
-        seconds=$(( $seconds - 1 ))
-    done
-}
-
-_countdown $1
+seconds=$1
+if [[ ! $seconds =~ ^[0-9]+$ ]]; then
+    echo "Invalid number of seconds"
+    exit 1
+fi
+while [ $seconds -gt 0 ]; do
+    echo -ne "Sleeping for ${seconds}s\r"
+    sleep 1
+    seconds=$(( $seconds - 1 ))
+done

@@ -1,7 +1,3 @@
 #!/usr/bin/env sh
 
-function _my_ip() {
-    dig +short myip.opendns.com @resolver1.opendns.com
-}
-
-_my_ip
+dig +short myip.opendns.com @resolver1.opendns.com
