@@ -23,7 +23,7 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# For tmux
+# TMUX
 export SHELL=$( which bash )
 # Git values
 export GIT_PS1_SHOWUNTRACKEDFILES=true
