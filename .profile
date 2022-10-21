@@ -1,10 +1,18 @@
+# M1 Homebrew
+if [[ $( uname -p ) == "arm" ]]; then
+    export HOMEBREW_PREFIX="/opt/homebrew";
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+fi
+
 # OSX bash completion via homebrew
 if hash brew 2>/dev/null; then
-    if [ -f $(brew --prefix)/etc/bash_completion ]; then
-        . $(brew --prefix)/etc/bash_completion
-    elif [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-        . $(brew --prefix)/share/bash-completion/bash_completion
-    fi
+    [ -r $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
+    [ -r $(brew --prefix)/share/bash-completion/bash_completion ] && . $(brew --prefix)/share/bash-completion/bash_completion
+    [ -r $(brew --prefix)/etc/profile.d/bash_completion.sh ] && . $(brew --prefix)/etc/profile.d/bash_completion.sh
 fi
 # *NIX bash completion
 if ! shopt -oq posix; then
