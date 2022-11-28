@@ -74,13 +74,6 @@ for f in ~/.profile.*; do
     [[ -f $f ]] && source $f
 done
 
-# .config files
-if [ "$( ls ~/.config/ | wc -l )" -lt "$( ls $PROFILE_LOCATION/.config/ | wc -l )" ]; then
-    echo "There seems to be missing some config files in your ~/.config directory."
-    echo "To add those in $PROFILE_LOCATION, type:"
-    echo "ln -s $PROFILE_LOCATION/.config/* .config/"
-fi
-
 # direnv
 # https://direnv.net/
 hash direnv 2>/dev/null && eval "$(direnv hook bash)"
@@ -92,10 +85,6 @@ hash direnv 2>/dev/null && eval "$(direnv hook bash)"
 # thefuck
 # https://github.com/nvbn/thefuck
 hash thefuck 2>/dev/null && eval $( thefuck --alias )
-
-# rvm
-# https://rvm.io/
-[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 
 # Set PS1 with git if available
 if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
