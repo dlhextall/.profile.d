@@ -15,7 +15,7 @@
     pwl = push --force-with-lease
     ps = pull --rebase --autostash
     rb = recreate-branch
-    rbm = rebase-master
+    rbd = rebase-with-default
     st = status
 [color]
     ui = true
