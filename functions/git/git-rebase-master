@@ -2,7 +2,8 @@
 
 source "$(git --exec-path)/git-sh-setup"
 
-git checkout master
+default_branch=$( git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@' )
+git checkout ${default_branch}
 git pull --rebase
 git checkout -
-git rebase master
+git rebase ${default_branch}
