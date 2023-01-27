@@ -8,7 +8,7 @@
     mm = merge-master
     nah = reset HEAD --hard
     nope = wipe-changes
-    okbye = pull-master-and-clean-branches
+    okbye = pull-default-and-clean-branches
     pl = pull --rebase
     plog = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     poop = stash pop

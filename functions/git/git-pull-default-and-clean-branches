@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+source "$(git --exec-path)/git-sh-setup"
+
+default_branch=$( git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@' )
+git checkout ${default_branch}
+git pull --rebase
+git clean-branches
