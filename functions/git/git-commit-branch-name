@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+source "$(git --exec-path)/git-sh-setup"
+
+git commit -m "[$( git branch --show-current )] $1"

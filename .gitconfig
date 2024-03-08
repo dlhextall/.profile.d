@@ -1,4 +1,5 @@
 [alias]
+    bommit = commit-branch-name
     br = branch
     ch = cherry-pick
     ci = commit
