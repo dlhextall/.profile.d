@@ -5,7 +5,7 @@
     cb = clean-branches
     co = checkout
     commend = commit --amend --no-edit
-    mm = merge-master
+    md = merge-with-default
     nah = reset HEAD --hard
     nope = wipe-changes
     okbye = pull-default-and-clean-branches
