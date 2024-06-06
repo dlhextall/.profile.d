@@ -2,11 +2,12 @@
 
 source "$(git --exec-path)/git-sh-setup"
 
-if [[ -n $1 ]]; then
-	git branch -D $1
-	git push origin :$1
-	git checkout -b $1
-	git push origin -u $1
-else
-	die "No branch specified"
+if [[ -z "$1" ]]; then
+	echo "No branch specified"
+	exit 1
 fi
+
+git branch -D $1
+git push origin :$1
+git checkout -b $1
+git push origin -u $1

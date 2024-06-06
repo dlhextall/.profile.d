@@ -76,7 +76,7 @@ done
 
 # direnv
 # https://direnv.net/
-hash direnv 2>/dev/null && eval "$(direnv hook bash)"
+hash direnv 2>/dev/null && eval "$( direnv hook bash )"
 
 # fuzzy finder
 # https://github.com/junegunn/fzf
