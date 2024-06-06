@@ -80,7 +80,7 @@ hash direnv 2>/dev/null && eval "$(direnv hook bash)"
 
 # fuzzy finder
 # https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+hash fzf 2>/dev/null && eval "$( fzf --bash )"
 
 # thefuck
 # https://github.com/nvbn/thefuck
