@@ -89,12 +89,16 @@ hash fzf 2>/dev/null && eval "$( fzf --bash )"
 # https://github.com/nvbn/thefuck
 hash thefuck 2>/dev/null && eval $( thefuck --alias )
 
+term=$( ps -p $( ps -p $$ -o ppid= ) -o args= )
 # Set PS1 with git if available
-if [[ $( ps -p $( ps -p $$ -o ppid= ) -o args= ) == *"Hyper"* ]]; then
+if [[ ${term} == *"Hyper"* ]]; then
     export PS1="\u \$ "
 else
     ps1_var="\[\e[1m\]\u"
     hash __git_ps1 2>/dev/null && ps1_var="$ps1_var\$(__git_ps1)"
     export PS1="$ps1_var \$ \[\e[0m\]"
+fi
+# Set tab title to current dir if not already supported by terminal emulator
+if [[ ${term} == "login -pf"* ]]; then
     export PROMPT_COMMAND="$PROMPT_COMMAND"'; set-title $( dirs -0 )'
 fi
