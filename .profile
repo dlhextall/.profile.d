@@ -59,7 +59,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 ls --color &>/dev/null && alias ls="ls --color"
 alias ll="ls -lah"
-alias tree="tree -C"
+hash eza 2>/dev/null && alias eza="eza -la"
+hash tree 2>/dev/null && alias tree="tree -C"
 function mkcd() {
     ## Shell scripts are run in a subshell, so the cd command would never work in an external function
     mkdir -p "$1" && cd "$_"
