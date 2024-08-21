@@ -36,6 +36,8 @@ export EDITOR=vim
 export PROFILE_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Ignore duplicates in bash history
 export HISTCONTROL="erasedups:ignoreboth"
+# Do not put those commands in command history
+export HISTIGNORE="ls:ll:pwd"
 # Add time to history command
 export HISTTIMEFORMAT="%F %T "
 # Record the history right away (instead of at the end of the session)
