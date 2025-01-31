@@ -1,25 +1,4 @@
-# M1 Homebrew
-if [[ $( uname -p ) == "arm" ]]; then
-    export HOMEBREW_PREFIX="/opt/homebrew";
-    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-    export HOMEBREW_REPOSITORY="/opt/homebrew";
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-fi
-
-# OSX bash completion via homebrew
-if hash brew 2>/dev/null; then
-    [ -r $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
-    [ -r $(brew --prefix)/share/bash-completion/bash_completion ] && . $(brew --prefix)/share/bash-completion/bash_completion
-    [ -r $(brew --prefix)/etc/profile.d/bash_completion.sh ] && . $(brew --prefix)/etc/profile.d/bash_completion.sh
-fi
-# *NIX bash completion
-if ! shopt -oq posix; then
-    [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-    [ -r /etc/bash_completion ] && . /etc/bash_completion
-fi
-
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # TMUX
 export SHELL=$( which bash )
 # Git values
@@ -52,7 +31,29 @@ for f in $PROFILE_LOCATION/functions/*.sh; do
     [[ ! -x $f ]] && source $f
 done
 
-PATH=$(find $PROFILE_LOCATION/functions -maxdepth 2 -type d | tr '\n' ':' | sed 's/:$//'):~/.bin:/usr/local/bin:/usr/local/sbin:$PATH
+PATH=$(find $PROFILE_LOCATION/functions -maxdepth 2 -type d | tr '\n' ':' | sed 's/:$//'):~/.bin:$PATH
+
+# M1 Homebrew
+if [[ $( uname -p ) == "arm" ]]; then
+    export HOMEBREW_PREFIX="/opt/homebrew";
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+fi
+# OSX bash completion via homebrew
+if hash brew 2>/dev/null; then
+    [ -r $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
+    [ -r $(brew --prefix)/share/bash-completion/bash_completion ] && . $(brew --prefix)/share/bash-completion/bash_completion
+    [ -r $(brew --prefix)/etc/profile.d/bash_completion.sh ] && . $(brew --prefix)/etc/profile.d/bash_completion.sh
+    [ -r $(brew --prefix)/opt/git/etc/bash_completion.d/git-prompt.sh ] && . $(brew --prefix)/opt/git/etc/bash_completion.d/git-prompt.sh
+fi
+# *NIX bash completion
+if ! shopt -oq posix; then
+    [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+    [ -r /etc/bash_completion ] && . /etc/bash_completion
+fi
 
 # General aliases
 alias ..="cd .."
