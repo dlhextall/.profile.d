@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+remote_name=$( git remote -v 2>&1 | head -n 1 | awk '{print $1}' )
+remote_url=$( git remote get-url ${remote_name} )
+echo "opening '${remote_name}' ${remote_url} in the default browser"
+open ${remote_url}
