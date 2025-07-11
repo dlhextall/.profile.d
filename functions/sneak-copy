@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+clipboard_manager_exists=$( [[ $( ps aux | grep Maccy | grep -v grep | wc -l ) != 0 ]] && echo true )
+
+on_exit () {
+    # without sleep, clipboard manager is not ignored
+    sleep 0.4 && [ "$clipboard_manager_exists" = true ] && defaults write org.p0deje.Maccy ignoreEvents false
+}
+trap on_exit EXIT
+
+# do not store input in clipboard manager Maccy
+[ "$clipboard_manager_exists" = true ] && defaults write org.p0deje.Maccy ignoreEvents true
+
+read -s -p "input: " input
+echo
+echo "${input}" | pbcopy
